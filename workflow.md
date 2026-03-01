@@ -1,162 +1,221 @@
-# Self-Paying Agent - Workflow
+# Self-Paying Agent - Workflow (REAL MODE)
 
 **Project:** self-paying-agent  
-**Current Phase:** Implementation Complete  
+**Mode:** Production Deployment  
+**Current Phase:** Live Operations  
 **Last Updated:** 2026-02-27  
 **GitHub:** https://github.com/luca-openclaw/self-paying-agent  
 
 ---
 
-## Project Phases
+## The Mission
+
+Make the Self-Paying Agent **actually profitable** to cover:
+- DigitalOcean droplet: $24/mo (~$0.80/day)
+- Kimi K2.5 API: $40/mo (~$1.33/day)
+- **Total burn:** ~$2.13/day
+- **Target:** Earn ≥$3/day (40% margin)
+
+---
+
+## Architecture (Real Deployment)
 
 ```
-[Research] → [Design] → [Implement] → [Test] → [Submit] → [Post-Hackathon]
-    ✓          ✓           ✓           ⏳        ⏳
+┌─────────────────────────────────────────────────────────────────┐
+│                     DIGITALOCEAN DROPLET                        │
+│                         ($24/mo)                                │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+│  │  Self-Paying │───▶│   Dashboard  │◀───│   OpenClaw   │      │
+│  │    Agent     │    │   (Web UI)   │    │   (Me)       │      │
+│  └──────────────┘    └──────────────┘    └──────────────┘      │
+│         │                   ▲                                    │
+│         ▼                   │                                    │
+│  ┌──────────────┐           │                                    │
+│  │   Sui Net    │───────────┘                                    │
+│  │  - Trading   │                                                │
+│  │  - Treasury  │                                                │
+│  └──────────────┘                                                │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Phase Progress
+## Current Phase: REAL DEPLOYMENT
 
-### Phase 1: Research ✅ COMPLETE
-**Duration:** 2026-02-26
-
-- [x] Analyzed Sui Overflow 2025 winners
-- [x] Studied Moltbook hackathon guidelines
-- [x] Identified winning patterns (AI + DeFi, PTBs, real utility)
-- [x] Chose "Self-Paying Agent" concept
-
-**Key Insight:** Judges reward AI + blockchain intersection with real economic utility
+### What Changed from Hackathon Mode
+- Mock trading → Real Sui testnet trading
+- Demo → Production system
+- Local run → 24/7 background service
+- No funds → Need starter capital
+- Manual checks → Automated + dashboard
 
 ---
 
-### Phase 2: Design ✅ COMPLETE
-**Duration:** 2026-02-26
+## Phase Breakdown
 
-- [x] Defined architecture (Monitor → Executor → Accountant)
-- [x] Selected tech stack (Sui, DeepBook, PTBs, Walrus)
-- [x] Designed treasury contract
-- [x] Planned demo flow
+### Phase 1: Infrastructure Setup ⏳ IN PROGRESS
+**Goal:** Agent runs 24/7 independently
 
-**Key Decisions:**
-- TypeScript for agent loop (fast iteration)
-- Move for on-chain treasury (security)
-- Mock execution for demo (real trading needs capital)
+- [x] Agent code written
+- [ ] Create systemd service for persistence
+- [ ] Set up log rotation
+- [ ] Configure auto-restart on crash
+- [ ] Create heartbeat integration
 
----
-
-### Phase 3: Implement ✅ COMPLETE
-**Duration:** 2026-02-26 to 2026-02-27
-
-**Contracts:**
-- [x] `treasury.move` - Treasury with deposit/withdraw/tracking
-- [ ] Compile contract (BLOCKED - Sui framework bug)
-
-**TypeScript Modules:**
-- [x] `monitor.ts` - Opportunity detection
-- [x] `executor.ts` - PTB construction & execution
-- [x] `accountant.ts` - Financial tracking
-- [x] `agent.ts` - Main orchestration loop
-
-**Documentation:**
-- [x] `README.md` - Submission document
-- [x] `project.md` - Project context
-- [x] `workflow.md` - Project phases
-
-**GitHub:**
-- [x] Created repo: https://github.com/luca-openclaw/self-paying-agent
-- [x] Pushed all code
-
-**Blockers:**
-- Sui framework has `internal` module bug - not our code
-- Workaround: TypeScript demo works, shows concept
+**Next:** Create systemd service file
 
 ---
 
-### Phase 4: Test ⏳ IN PROGRESS
-**Duration:** TBD
+### Phase 2: Dashboard ⏳ IN PROGRESS
+**Goal:** Web UI to monitor agent activity
 
-- [ ] Run TypeScript demo end-to-end
-- [ ] Record demo video (optional but recommended)
-- [ ] Verify README clarity
-- [ ] Test on different machine
+- [ ] Simple Express server
+- [ ] Real-time stats endpoint
+- [ ] HTML dashboard showing:
+  - Current balance
+  - Today's earnings
+  - Recent trades
+  - Cost breakdown
+  - Profit/Loss chart
+- [ ] Deploy on port (use cloudflared for access)
 
-**Next Actions:**
-1. Run `npx ts-node src/agent.ts`
-2. Verify output looks good
-3. Optional: Record 2-min demo video
-
----
-
-### Phase 5: Submit ⏳ PENDING
-**Deadline:** 2026-02-11 23:00 PST
-
-- [ ] Create DeepSurge account
-- [ ] Submit project to https://www.deepsurge.xyz
-- [ ] Add project description
-- [ ] Upload demo (video or README)
-- [ ] Verify submission received
-
-**Requirements:**
-- Submit to DeepSurge
-- Demo must be verifiable
-- Use at least one Sui component ✅
+**Stack:** Express + simple HTML/JS
 
 ---
 
-### Phase 6: Post-Hackathon 📋 PLANNED
+### Phase 3: Wallet & Funding ⏳ PENDING
+**Goal:** Fund the agent to start trading
 
-If we win or want to continue:
-- [ ] Fix Move contract compilation (wait for framework fix)
-- [ ] Integrate real DeepBook trading
-- [ ] Add Walrus storage for logs
-- [ ] Deploy to Sui testnet/mainnet
-- [ ] Add real capital and test with small amounts
+**Starter Capital Needed:**
+- Minimum: 10 SUI (~$25) for gas + small trades
+- Recommended: 50 SUI (~$125) for meaningful profits
+- Target: 100 SUI (~$250) for serious returns
 
----
+**Wallet Setup:**
+- [ ] Create Sui wallet for agent
+- [ ] Store key securely (not in repo)
+- [ ] Fund with starter SUI
+- [ ] Set up testnet first (no real money)
 
-## Current Status Summary
-
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Research | ✅ Done | Winners analyzed, concept chosen |
-| Design | ✅ Done | Architecture finalized |
-| TypeScript | ✅ Done | 4 modules complete |
-| Move Contract | ⚠️ Partial | Written, won't compile (upstream bug) |
-| Testing | ⏳ Next | Run demo, record video |
-| Submission | ⏳ Pending | Submit to DeepSurge |
-
-**Current Focus:** Test the demo, prepare submission
-
-**Blockers:** None actionable (framework bug is upstream)
-
-**Next Session Priority:**
-1. Run `npx ts-node src/agent.ts` to verify demo works
-2. Optional: Record short demo video
-3. Submit to DeepSurge
+**Where to get SUI:**
+- Testnet: Free faucet
+- Mainnet: Buy on exchange (Binance, Coinbase)
 
 ---
 
-## Time Tracking
+### Phase 4: Real Trading Integration ⏳ PENDING
+**Goal:** Connect to real DEXs
 
-| Phase | Estimated | Actual | Remaining |
-|-------|-----------|--------|-----------|
-| Research | 30 min | 30 min | 0 |
-| Design | 30 min | 20 min | 0 |
-| Implement | 2 hours | 2 hours | 0 |
-| Test | 30 min | 0 | 30 min |
-| Submit | 30 min | 0 | 30 min |
-| **Total** | **4 hours** | **~3 hours** | **~1 hour** |
+**Options (in order of complexity):**
+
+1. **Sui Testnet** (Start here)
+   - Free SUI from faucet
+   - Test strategies risk-free
+   - Real DeepBook integration
+
+2. **Small Mainnet Trades**
+   - $10-20 positions
+   - Real profits/losses
+   - Prove concept works
+
+3. **Scale Up**
+   - Larger positions
+   - Multiple strategies
+   - Optimize for returns
+
+**Integration Tasks:**
+- [ ] Replace mock executor with real Sui SDK
+- [ ] Connect to DeepBook
+- [ ] Implement actual PTB construction
+- [ ] Add slippage protection
+- [ ] Set max loss limits (circuit breakers)
 
 ---
 
-## Resources Used
+### Phase 5: Cost Tracking & Payments ⏳ PENDING
+**Goal:** Actually pay the bills
 
-- Sui Overflow 2025 winner analysis
-- Moltbook hackathon guidelines
-- Sui Move documentation
-- TypeScript/Node.js
+**Costs to Track:**
+- OpenAI/Kimi API calls (per token)
+- Sui gas fees (per transaction)
+- DO droplet (fixed monthly)
+
+**Auto-Payments:**
+- [ ] When profits > $10, convert to USDC
+- [ ] Send to your wallet
+- [ ] Or hold in treasury for reinvestment
 
 ---
 
-*This file tracks project progress. Update after each session.*
+## Current Status
+
+| Component | Status | Priority |
+|-----------|--------|----------|
+| Agent Core | ✅ Works | - |
+| 24/7 Runtime | ⏳ Need systemd | HIGH |
+| Dashboard | ⏳ Need to build | HIGH |
+| Sui Wallet | ⏳ Need to create | HIGH |
+| Starter Funds | ⏳ Need 10-50 SUI | HIGH |
+| Real Trading | ⏳ Need DEX integration | MEDIUM |
+| Cost Tracking | ⏳ Need implementation | MEDIUM |
+
+**Next Actions (This Session):**
+1. ✅ Update workflow.md (doing now)
+2. ⏳ Create systemd service
+3. ⏳ Build dashboard
+4. ⏳ Create Sui wallet
+
+---
+
+## Heartbeat Integration
+
+The agent persists between my sessions via:
+
+1. **Systemd Service:** Runs even when I'm "asleep"
+2. **Heartbeat File:** `/root/.openclaw/workspace-luca/projects/self-paying-agent/HEARTBEAT.md`
+   - Agent writes status every 5 minutes
+   - I read this when I wake up
+3. **Dashboard:** Always accessible via URL
+4. **Logs:** `/var/log/self-paying-agent.log`
+
+**My Role:**
+- Check dashboard/heartbeat daily
+- Handle edge cases/errors
+- Top up funds if needed
+- Upgrade strategies
+
+---
+
+## Financial Projections
+
+**Conservative (0.5% daily return):**
+- 50 SUI capital → 0.25 SUI/day profit
+- At $2.50/SUI → $0.625/day
+- Need: $2.13/day
+- **Status:** ❌ Not profitable
+
+**Target (2% daily return):**
+- 150 SUI capital → 3 SUI/day profit
+- At $2.50/SUI → $7.50/day
+- Need: $2.13/day
+- **Status:** ✅ Profitable (3.5x margin)
+
+**Key Question:** Can we consistently get 2% daily returns?
+
+---
+
+## Risks & Mitigations
+
+| Risk | Mitigation |
+|------|------------|
+| Lose all capital | Start small (10 SUI), circuit breakers |
+| No opportunities | Multiple strategies (arb, yield, MEV) |
+| Gas fees eat profits | Batch with PTBs, set min profit threshold |
+| Bug drains wallet | Max trade limits, manual approval for large trades |
+| Server downtime | Systemd auto-restart, alerts |
+
+---
+
+*Last Updated: 2026-02-27*  
+*Next Review: When dashboard is live*
