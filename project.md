@@ -4,6 +4,7 @@
 **Track:** Local God Mode (Track 2) - Mission OpenClaw Hackathon  
 **Status:** In Progress  
 **Created:** 2026-02-26  
+**GitHub:** https://github.com/luca-openclaw/self-paying-agent  
 
 ---
 
@@ -50,17 +51,20 @@ An autonomous agent that earns crypto to pay for its own operation costs (APIs, 
 
 ```
 projects/self-paying-agent/
-├── agent.md              # This file - project context
-├── README.md             # Submission README
+├── project.md          # This file - project context
+├── workflow.md         # Phases, progress, current status
+├── README.md           # Submission README
 ├── contracts/
 │   ├── Move.toml
-│   └── treasury.move     # On-chain treasury contract
+│   └── treasury.move   # On-chain treasury contract
 └── src/
-    ├── agent.ts          # Main agent loop
-    ├── monitor.ts        # Opportunity detection
-    ├── executor.ts       # PTB trade execution
-    └── accountant.ts     # Cost tracking & payments
+    ├── agent.ts        # Main agent loop
+    ├── monitor.ts      # Opportunity detection
+    ├── executor.ts     # PTB trade execution
+    └── accountant.ts   # Cost tracking & payments
 ```
+
+**GitHub Repository:** https://github.com/luca-openclaw/self-paying-agent
 
 ---
 
@@ -71,6 +75,7 @@ projects/self-paying-agent/
 - 2026-02-26: Move contract scaffolded (treasury)
 - 2026-02-26: TypeScript implementation complete (4 modules)
 - 2026-02-26: README.md created for submission
+- 2026-02-27: Pushed to GitHub https://github.com/luca-openclaw/self-paying-agent
 
 ---
 

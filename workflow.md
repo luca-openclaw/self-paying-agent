@@ -2,7 +2,8 @@
 
 **Project:** self-paying-agent  
 **Current Phase:** Implementation Complete  
-**Last Updated:** 2026-02-26  
+**Last Updated:** 2026-02-27  
+**GitHub:** https://github.com/luca-openclaw/self-paying-agent  
 
 ---
 
@@ -45,7 +46,7 @@
 ---
 
 ### Phase 3: Implement ✅ COMPLETE
-**Duration:** 2026-02-26
+**Duration:** 2026-02-26 to 2026-02-27
 
 **Contracts:**
 - [x] `treasury.move` - Treasury with deposit/withdraw/tracking
@@ -60,6 +61,11 @@
 **Documentation:**
 - [x] `README.md` - Submission document
 - [x] `project.md` - Project context
+- [x] `workflow.md` - Project phases
+
+**GitHub:**
+- [x] Created repo: https://github.com/luca-openclaw/self-paying-agent
+- [x] Pushed all code
 
 **Blockers:**
 - Sui framework has `internal` module bug - not our code
